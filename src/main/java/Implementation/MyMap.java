@@ -3,7 +3,7 @@ package Implementation;
 public class MyMap<K, V> {
 
     private MyEntry<K, V>[] buckets;
-    private static final int INITIAL_CAPACITY = 1 << 4; // 16
+    private static final int INITIAL_CAPACITY = 16;
     private int size = 0;
 
     public MyMap() {
@@ -51,21 +51,22 @@ public class MyMap<K, V> {
     }
 
     public void remove(K key) {
-        MyEntry<K, V> bucket = buckets[getHash(key) % getBucketSize()];
-        MyEntry<K, V> tempBucket = new MyEntry<>(bucket.key, bucket.value, null);
-        while (bucket != null) {
-                if (tempBucket.next == null) {
-                    if (bucket.key.equals(key)) {
-                        bucket = bucket.next;
-                        tempBucket.next = bucket;
-                        break;
-                    }
-                }
+        int bucketInt = getHash(key) % getBucketSize();
+        MyEntry<K, V> bucket = buckets[bucketInt];
+        MyEntry<K, V> tempBucket = null;
 
+        if (bucket != null && bucket.key.equals(key)) {
+            buckets[bucketInt] = bucket.next;
+            return;
+        }
+        while (bucket != null && !bucket.key.equals(key)) {
+            tempBucket = bucket;
             bucket = bucket.next;
         }
-        buckets[getHash(key) % getBucketSize()] = tempBucket;
 
+        if (bucket == null) return;
+
+        tempBucket.next = bucket.next;
     }
 
     private int getBucketSize() {

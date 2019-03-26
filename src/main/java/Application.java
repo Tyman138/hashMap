@@ -1,12 +1,7 @@
 import Implementation.MyMap;
 
-import java.util.Dictionary;
-
 public class Application {
     public static void main(String[] args) {
-        MyMap<Integer,String> map1 = new MyMap<>();
-        map1.put(2131321,"Hi");
-        System.out.println(map1.get(2131321));
         MyMap<String,String> map = new MyMap<>();
         map.put("Darova1","darova1");
         map.put("Darova2","darova2");
@@ -38,7 +33,7 @@ public class Application {
         map.put("Darova28","Darova28");
         map.put("Darova29","Darova29");
         map.put("Darova30","Darova30");
-        map.remove("Darova18");
+        map.remove("Darova29");
         for (int i = 1; i < map.size()+1;i++){
             System.out.println(map.get("Darova"+i));
         }
