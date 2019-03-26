@@ -33,7 +33,7 @@ public class Application {
         map.put("Darova28","Darova28");
         map.put("Darova29","Darova29");
         map.put("Darova30","Darova30");
-        map.remove("Darova3");
+        map.remove("Darova29");
         for (int i = 1; i < map.size()+1;i++){
             System.out.println(map.get("Darova"+i));
         }
