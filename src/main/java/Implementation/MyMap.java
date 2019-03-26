@@ -5,12 +5,15 @@ public class MyMap<K, V> {
     private MyEntry<K, V>[] buckets;
     private static final int INITIAL_CAPACITY = 1 << 4; // 16
     private int size = 0;
+
     public MyMap() {
         this(INITIAL_CAPACITY);
     }
+
     public MyMap(int capacity) {
         this.buckets = new MyEntry[capacity];
     }
+
     public void put(K key, V value) {
         MyEntry<K, V> entry = new MyEntry<>(key, value, null);
         int bucket = getHash(key) % getBucketSize();
@@ -46,15 +49,24 @@ public class MyMap<K, V> {
         }
         return null;
     }
-   /* public void remove(K key){
+
+    public void remove(K key) {
         MyEntry<K, V> bucket = buckets[getHash(key) % getBucketSize()];
+        MyEntry<K, V> tempBucket = new MyEntry<>(bucket.key, bucket.value, null);
         while (bucket != null) {
-            if (bucket.key.equals(key)) {
-                buckets.
-            }
+                if (tempBucket.next == null) {
+                    if (bucket.key.equals(key)) {
+                        bucket = bucket.next;
+                        tempBucket.next = bucket;
+                        break;
+                    }
+                }
+
             bucket = bucket.next;
         }
-    }*/
+        buckets[getHash(key) % getBucketSize()] = tempBucket;
+
+    }
 
     private int getBucketSize() {
         return buckets.length;
@@ -63,7 +75,8 @@ public class MyMap<K, V> {
     private int getHash(K key) {
         return Math.abs(key.hashCode());
     }
-    public int size(){
+
+    public int size() {
         return size;
     }
 }

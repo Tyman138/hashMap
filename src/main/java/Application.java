@@ -6,7 +6,6 @@ public class Application {
     public static void main(String[] args) {
         MyMap<Integer,String> map1 = new MyMap<>();
         map1.put(2131321,"Hi");
-        Dictionary
         System.out.println(map1.get(2131321));
         MyMap<String,String> map = new MyMap<>();
         map.put("Darova1","darova1");
@@ -27,6 +26,19 @@ public class Application {
         map.put("Darova16","darova16");
         map.put("Darova17","darova17");
         map.put("Darova18","darova18");
+        map.put("Darova19","darova19");
+        map.put("Darova20","darova20");
+        map.put("Darova21","Darova21");
+        map.put("Darova22","Darova22");
+        map.put("Darova23","Darova23");
+        map.put("Darova24","Darova24");
+        map.put("Darova25","Darova25");
+        map.put("Darova26","Darova26");
+        map.put("Darova27","Darova27");
+        map.put("Darova28","Darova28");
+        map.put("Darova29","Darova29");
+        map.put("Darova30","Darova30");
+        map.remove("Darova18");
         for (int i = 1; i < map.size()+1;i++){
             System.out.println(map.get("Darova"+i));
         }
